@@ -1,0 +1,24 @@
+{
+    "name": "quoma/log-module",
+    "type": "yii2-module",
+
+    "description": "Modulo de log",
+    "keywords": ["yii2", "log"],
+    "license": "quoma",
+    "authors": [
+        {
+            "name": "Quoma",
+            "email": "info@quoma.com.ar"
+        }
+    ],
+
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "quoma\\modules\\log\\": "src/"
+        }
+    }
+}
