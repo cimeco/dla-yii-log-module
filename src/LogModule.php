@@ -1,6 +1,6 @@
 <?php
 
-namespace quoma\modules\log;
+namespace app\modules\log;
 
 use quoma\core\menu\Menu;
 use quoma\core\module\QuomaModule;
