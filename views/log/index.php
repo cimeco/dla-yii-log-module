@@ -26,7 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'username',
                 'value' => function($model){
                     $user = \webvimark\modules\UserManagement\models\User::findOne($model->user_id);
-                    return $user->username;
+                    if($user){
+                        return $user->username;
+                    }
+                    return '';
                 },
             ],
             [
@@ -34,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'datetime',
                 'filter' => false
             ],
+            'attribute',
             [
                 'class' => 'quoma\core\grid\ActionColumn',
                 'template' => '{view}'

@@ -81,6 +81,7 @@ class Log extends \quoma\core\db\ActiveRecord
             'model_id' => LogModule::t('Model ID'),
             'old_value' => LogModule::t('Old Value'),
             'new_value' => LogModule::t('New Value'),
+            'attribute' => LogModule::t('Attibute'),
             'post' => LogModule::t('Post'),
             'get' => LogModule::t('Get'),
         ];
@@ -228,7 +229,14 @@ class Log extends \quoma\core\db\ActiveRecord
                     $basePath = dirname($class->getFileName()) . '/messages';
                     if (file_exists($basePath)) {
                         if (file_exists($basePath . '/' . Yii::$app->language . "/$id-log.php")) {
-                            $array[$d['route']] = Yii::t($id . '-log', $d['route']);
+                            if(array_key_exists($d['route'], $array)){
+                                $exist_not_translated = strpos($array[$d['route']], '/');
+                                if($exist_not_translated){
+                                    $array[$d['route']] = Yii::t($id . '-log', $d['route']);
+                                }
+                            } else {
+                                $array[$d['route']] = Yii::t($id . '-log', $d['route']);
+                            }
                         }
                     }
                 }
