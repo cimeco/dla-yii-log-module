@@ -46,7 +46,6 @@ class LogModule extends QuomaModule
                 if (file_exists($basePath)) {
 
                     if (file_exists($basePath . '/' . Yii::$app->language . "/$id-log.php")) {
-                        Yii::trace("SIIIIIII esta " . $basePath . '/' . Yii::$app->language . "/$id-log.php");
                         \Yii::$app->i18n->translations[$id . '-log'] = [
                             'class' => 'yii\i18n\PhpMessageSource',
                             'basePath' => $basePath,

@@ -122,17 +122,19 @@ class Log extends \quoma\core\db\ActiveRecord
         }
     }
 
-    public static function log($model = null, $model_id = null, $attribute = null, $old_value = null, $new_value = null, $data = null, $post = null, $get = null)
+    public static function log($model = null, $model_id = null, $attributes = null, $old_values = null, $new_values = null, $data = null, $post = null, $get = null)
     {
+
 
         $log = new Log();
         $log->route = Yii::$app->requestedRoute ? Yii::$app->requestedRoute : 'site/index';
         $log->user_id = Yii::$app->user->getId();
         $log->model = $model;
         $log->model_id = $model_id;
-        $log->attribute = $attribute;
-        $log->old_value = $old_value;
-        $log->new_value = $new_value;
+
+        $log->attribute = self::concatValues($attributes);
+        $log->old_value = self::concatValues($old_values);
+        $log->new_value = self::concatValues($new_values);
 
         if (empty($post)) {
             $post = self::prettyArray(Yii::$app->request->getBodyParams());
@@ -174,6 +176,20 @@ class Log extends \quoma\core\db\ActiveRecord
         }
 
         return $pretty;
+    }
+
+    private static function concatValues($array)
+    {
+        $concat_values = '';
+        if (is_array($array)) {
+            foreach ($array as $value) {
+                $concat_values .= $value . "\n";
+            }
+        } else {
+            $concat_values .= $array;
+        }
+
+        return $concat_values;
     }
 
     public function afterSave($insert, $changedAttributes)
