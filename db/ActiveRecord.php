@@ -2,7 +2,7 @@
 
 namespace app\modules\log\db;
 
-use app\modules\log\src\models\Log;
+use app\modules\log\models\Log;
 
 class ActiveRecord extends \quoma\core\db\ActiveRecord
 {

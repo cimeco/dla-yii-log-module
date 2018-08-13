@@ -1,11 +1,12 @@
 <?php
 
-namespace quoma\modules\log\controllers;
+namespace app\modules\log\controllers;
 
 use Yii;
 use quoma\core\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\modules\log\models\search\LogSearch;
 
 /**
  * LogController implements the CRUD actions for Log model.

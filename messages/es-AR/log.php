@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'route' => 'Route',
+    'route' => 'Item',
     'user_id' => 'User ID',
     'log_data_id' => 'Log Data ID',
     'log_id' => 'Log ID',

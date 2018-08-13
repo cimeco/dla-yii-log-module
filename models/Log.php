@@ -1,9 +1,9 @@
 <?php
 
-namespace app\modules\log\src\models;
+namespace app\modules\log\models;
 
 use Yii;
-use app\modules\LogModule;
+use app\modules\log\LogModule;
 
 /**
  * This is the model class for table "log".
@@ -197,6 +197,28 @@ class Log extends \quoma\core\db\ActiveRecord
             Yii::$app->dblog->createCommand('DELETE FROM log ORDER BY log_id ASC LIMIT ' . $qty)
                     ->execute();
         }
+    }
+
+    public static function getLogClassNames()
+    {
+        $array = [];
+        $data = Yii::$app->dblog->createCommand('SELECT DISTINCT route, model FROM ' . self::tableName())
+                ->queryAll();
+
+        foreach (Yii::$app->getModules() as $id => $module) {
+            if (is_array($module)) {
+                $class = new \ReflectionClass($module['class']);
+                foreach ($data as $d) {
+                    $basePath = dirname($class->getFileName()) . '/messages';
+                    if (file_exists($basePath)) {
+                        if (file_exists($basePath . '/' . Yii::$app->language . "/$id-log.php")) {
+                            $array[$d['route']] = Yii::t($id . '-log', $d['route']);
+                        }
+                    }
+                }
+            }
+        }
+        return $array;
     }
 
 }

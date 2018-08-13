@@ -7,17 +7,16 @@ use yii\grid\GridView;
 /* @var $searchModel \quoma\modules\log\models\search\LogSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = \quoma\modules\log\LogModule::t('Logs');
+$this->title = \app\modules\log\LogModule::t('Logs');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="log-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?= $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -35,10 +34,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'datetime',
                 'filter' => false
             ],
-            'model',
-            // 'model_id',
-            // 'data:ntext',
-
+            'old_value',
+            'new_value',
             [
                 'class' => 'quoma\core\grid\ActionColumn',
                 'template' => '{view}'
