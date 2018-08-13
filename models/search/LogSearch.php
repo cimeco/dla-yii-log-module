@@ -76,10 +76,10 @@ class LogSearch extends Log
         $query->andFilterWhere(['like', 'route', $this->route])
                 ->andFilterWhere(['like', 'model', $this->model]);
         if($this->fromDate){
-            $query->andFilterWhere(['>', 'datetime', (new \DateTime($this->fromDate))->getTimestamp()]);
+            $query->andFilterWhere(['>=', 'datetime', (new \DateTime($this->fromDate))->getTimestamp()]);
         }
         if($this->toDate){
-            $query->andFilterWhere(['<', 'datetime', (new \DateTime($this->toDate))->getTimestamp()]);
+            $query->andFilterWhere(['<=', 'datetime', (new \DateTime($this->toDate))->getTimestamp()]);
         }
         if($this->search_text){
             $query->andFilterWhere(['like', 'old_value', $this->search_text]);

@@ -2,12 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\modules\log\LogModule;
 
 /* @var $this yii\web\View */
 /* @var $model \quoma\modules\log\models\Log */
 
 $this->title = $model->log_id;
-$this->params['breadcrumbs'][] = ['label' => \quoma\modules\log\LogModule::t('Logs'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => LogModule::t('Logs'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="log-view">
@@ -23,7 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'datetime:datetime',
             'model',
             'model_id',
-            'data:ntext',
+            'attribute:raw',
+            'old_value:raw',
+            'new_value:raw',
         ],
     ]) ?>
 

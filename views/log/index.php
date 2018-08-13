@@ -34,8 +34,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'datetime',
                 'filter' => false
             ],
-            'old_value',
-            'new_value',
             [
                 'class' => 'quoma\core\grid\ActionColumn',
                 'template' => '{view}'
