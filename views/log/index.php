@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel \quoma\modules\log\models\search\LogSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = \app\modules\log\LogModule::t('Logs');
+$this->title = \quoma\modules\log\LogModule::t('Logs');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="log-index">

@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use app\modules\log\models\Log;
+use quoma\modules\log\models\Log;
 use kartik\widgets\DatePicker;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;

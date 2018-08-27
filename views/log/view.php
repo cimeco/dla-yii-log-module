@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use app\modules\log\LogModule;
+use quoma\modules\log\LogModule;
 
 /* @var $this yii\web\View */
 /* @var $model \quoma\modules\log\models\Log */

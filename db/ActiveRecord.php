@@ -1,10 +1,10 @@
 <?php
 
-namespace app\modules\log\db;
+namespace quoma\modules\log\db;
 
-use app\modules\log\models\Log;
+use quoma\modules\log\models\Log;
 
-class ActiveRecord extends \yii\db\ActiveRecord
+class ActiveRecord extends \quoma\core\db\ActiveRecord
 {
     
     public function init()
@@ -19,12 +19,6 @@ class ActiveRecord extends \yii\db\ActiveRecord
         $this->on( ActiveRecord::EVENT_AFTER_DELETE, function ($event) {
             $this->createLog($event);
         });
-    }
-    
-    public function getDeletable(){
-        
-        return false;
-        
     }
     
     public function createLog($event){

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\log;
+namespace quoma\modules\log;
 
 use quoma\core\menu\Menu;
 use quoma\core\module\QuomaModule;
@@ -9,7 +9,7 @@ use Yii;
 class LogModule extends QuomaModule
 {
 
-    public $controllerNamespace = 'app\modules\log\controllers';
+    public $controllerNamespace = 'quoma\modules\log\controllers';
 
     public function init()
     {

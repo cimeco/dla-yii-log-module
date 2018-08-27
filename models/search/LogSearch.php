@@ -1,14 +1,14 @@
 <?php
 
-namespace app\modules\log\models\search;
+namespace quoma\modules\log\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\log\models\Log;
+use quoma\modules\log\models\Log;
 
 /**
- * LogSearch represents the model behind the search form about `app\modules\log\models\Log`.
+ * LogSearch represents the model behind the search form about `quoma\modules\log\models\Log`.
  */
 class LogSearch extends Log
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace app\modules\log\models;
+namespace quoma\modules\log\models;
 
 use Yii;
-use app\modules\log\LogModule;
+use quoma\modules\log\LogModule;
 
 /**
  * This is the model class for table "log".

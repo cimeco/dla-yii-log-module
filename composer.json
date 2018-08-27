@@ -13,12 +13,19 @@
     ],
 
     "require": {
-        "yiisoft/yii2": "~2.0.0"
+        "yiisoft/yii2": "~2.0.0",
+        "quoma/yii2-core-components": ">=1.5.2"
     },
 
     "autoload": {
         "psr-4": {
-            "quoma\\modules\\log\\": "src/"
+            "quoma\\modules\\log\\": ""
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://bitbucket.org/quomateam/yii2-core-components.git"
+        }
+    ]
 }
