@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use quoma\modules\log\models\Log;
+use quoma\modules\log\LogModule;
 
 /**
  * LogSearch represents the model behind the search form about `quoma\modules\log\models\Log`.
@@ -81,9 +82,12 @@ class LogSearch extends Log
         if($this->toDate){
             $query->andFilterWhere(['<=', 'datetime', (new \DateTime($this->toDate))->getTimestamp()]);
         }
+        
         if($this->search_text){
             $query->andFilterWhere(['like', 'old_value', $this->search_text]);
             $query->orFilterWhere(['like', 'new_value', $this->search_text]);
+            $query->orFilterWhere(['like', 'get', $this->search_text]);
+            $query->orFilterWhere(['like', 'post', $this->search_text]);
         }
 
         return $dataProvider;
@@ -105,6 +109,19 @@ class LogSearch extends Log
 
             $query->andWhere(['user_id' => $users_ids]);
         }
+    }
+    
+    
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return array_merge(parent::attributeLabels(), [
+            'fromDate' => LogModule::t('From Date'),
+            'toDate' => LogModule::t('To Date'),
+            'search_text' => LogModule::t('Search text')
+        ]);
     }
 
 }

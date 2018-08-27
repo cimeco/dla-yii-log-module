@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'log_id',
             'route',
             [
-                'attribute' => 'username',
+                'attribute' => 'user_id',
                 'value' => function($model){
                     $user = \webvimark\modules\UserManagement\models\User::findOne($model->user_id);
                     if($user){

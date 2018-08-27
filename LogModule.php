@@ -35,28 +35,4 @@ class LogModule extends QuomaModule
         return [];
     }
 
-    public function registerTranslations()
-    {
-
-        foreach (Yii::$app->getModules() as $id => $module) {
-            if (is_array($module)) {
-                $class = new \ReflectionClass($module['class']);
-
-                $basePath = dirname($class->getFileName()) . '/messages';
-                if (file_exists($basePath)) {
-
-                    if (file_exists($basePath . '/' . Yii::$app->language . "/$id-log.php")) {
-                        \Yii::$app->i18n->translations[$id . '-log'] = [
-                            'class' => 'yii\i18n\PhpMessageSource',
-                            'basePath' => $basePath,
-                            'fileMap' => [
-                                $id . "-log" => $id . '-log.php',
-                            ],
-                        ];
-                    }
-                }
-            }
-        }
-    }
-
 }

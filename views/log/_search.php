@@ -21,7 +21,7 @@ use webvimark\modules\UserManagement\models\User;
                 'method' => 'get',
     ]);
     ?>
-    <div>
+    <div class="row">
         <div class="col-sm-6">
             <?=
             $form->field($model, 'route')->widget(\kartik\widgets\Select2::classname(), [
@@ -48,20 +48,7 @@ use webvimark\modules\UserManagement\models\User;
 
     <div class="row">
         <div class="col-sm-6">
-            <label class="control-label"><?= Yii::t('app', 'To Date') ?></label>
-            <?=
-            DatePicker::widget([
-                'model' => $model,
-                'attribute' => 'fromDate',
-                'pluginOptions' => [
-                    'format' => 'dd-mm-yyyy',
-                    'autoclose' => true
-                ],
-            ]);
-            ?>
-        </div>
-        <div class="col-sm-6">
-            <label class="control-label"><?= Yii::t('app', 'From Date') ?></label>
+            <label class="control-label"><?= \quoma\modules\log\LogModule::t('From Date') ?></label>
             <?=
             DatePicker::widget([
                 'model' => $model,
@@ -73,7 +60,19 @@ use webvimark\modules\UserManagement\models\User;
             ]);
             ?>
         </div>
-
+        <div class="col-sm-6">
+            <label class="control-label"><?= \quoma\modules\log\LogModule::t('To Date') ?></label>
+            <?=
+            DatePicker::widget([
+                'model' => $model,
+                'attribute' => 'fromDate',
+                'pluginOptions' => [
+                    'format' => 'dd-mm-yyyy',
+                    'autoclose' => true
+                ],
+            ]);
+            ?>
+        </div>
     </div>
     <br>
     <div>

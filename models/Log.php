@@ -73,17 +73,18 @@ class Log extends \quoma\core\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'log_id' => LogModule::t('Log ID'),
+            'log_id' => LogModule::t('ID'),
             'route' => LogModule::t('Route'),
-            'user_id' => LogModule::t('User ID'),
+            'user_id' => LogModule::t('User'),
             'datetime' => LogModule::t('Datetime'),
             'class' => LogModule::t('Class'),
             'model_id' => LogModule::t('Model ID'),
             'old_value' => LogModule::t('Old Value'),
             'new_value' => LogModule::t('New Value'),
-            'attribute' => LogModule::t('Attibute'),
+            'attribute' => LogModule::t('Attribute'),
             'post' => LogModule::t('Post'),
             'get' => LogModule::t('Get'),
+            'model' => LogModule::t('Model'),
         ];
     }
 
@@ -126,9 +127,8 @@ class Log extends \quoma\core\db\ActiveRecord
     public static function log($model = null, $model_id = null, $attributes = null, $old_values = null, $new_values = null, $data = null, $post = null, $get = null)
     {
 
-
         $log = new Log();
-        $log->route = Yii::$app->requestedRoute ? Yii::$app->requestedRoute : 'site/index';
+        $log->route = Yii::$app->requestedRoute ?? 'site/index';
         $log->user_id = Yii::$app->user->getId();
         $log->model = $model;
         $log->model_id = $model_id;
@@ -205,7 +205,7 @@ class Log extends \quoma\core\db\ActiveRecord
     public static function garbageCollector()
     {
 
-        $limit = Yii::$app->params['garbageCollectorLimit'];
+        $limit = Yii::$app->params['garbageCollectorLimit'] ?? 1000000;
         $count = Log::find()->count();
         if ($count > $limit) {
 
