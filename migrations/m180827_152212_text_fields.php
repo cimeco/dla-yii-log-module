@@ -10,7 +10,7 @@ class m180827_152212_text_fields extends Migration
     
     public function init()
     {
-        $this->db = 'dblog';
+        $this->db = 'db_log';
         parent::init();
     }
     

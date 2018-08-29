@@ -8,7 +8,7 @@ class m160101_000001_create_tables_logs extends Migration
     
     public function init()
     {
-        $this->db = 'dblog';
+        $this->db = 'db_log';
         parent::init();
     }
     

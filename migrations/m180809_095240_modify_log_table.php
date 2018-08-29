@@ -8,7 +8,7 @@ class m180809_095240_modify_log_table extends Migration
 
     public function init()
     {
-        $this->db = 'dblog';
+        $this->db = 'db_log';
         parent::init();
     }
 

@@ -36,7 +36,7 @@ class Log extends \quoma\core\db\ActiveRecord
      */
     public static function getDb()
     {
-        return Yii::$app->get('dblog');
+        return Yii::$app->get('db_log');
     }
 
     /**
@@ -211,7 +211,7 @@ class Log extends \quoma\core\db\ActiveRecord
 
             $qty = $count - $limit;
 
-            Yii::$app->dblog->createCommand('DELETE FROM log ORDER BY log_id ASC LIMIT ' . $qty)
+            static::getDb()->createCommand('DELETE FROM log ORDER BY log_id ASC LIMIT ' . $qty)
                     ->execute();
         }
     }
@@ -219,7 +219,7 @@ class Log extends \quoma\core\db\ActiveRecord
     public static function getLogClassNames()
     {
         $array = [];
-        $data = Yii::$app->dblog->createCommand('SELECT DISTINCT route, model FROM ' . self::tableName())
+        $data = static::getDb()->createCommand('SELECT DISTINCT route, model FROM ' . self::tableName())
                 ->queryAll();
 
         foreach (Yii::$app->getModules() as $id => $module) {
